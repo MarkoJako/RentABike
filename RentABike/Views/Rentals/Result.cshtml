@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RentABike.Models.Rental>
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="rental-result-container"class="container-fluid" style="padding-top: 20px;">
+        <div id="rental-left" class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+            <img id="result-img-left" src="~/Content/Images/continental&uvex&SR.jpg" class="img-responsive" onclick="javascript:window.location='http://planetbike.rs/';" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div id="rental-center-up">
+                <div>
+                    <p id="calculation-result-text-align">Selected Bicycle: @ViewBag.Bike</p>
+                </div>
+                <div>
+                    <p id="calculation-result-text-align">Membership Type: @ViewBag.MembershipType</p>
+                </div>
+                <div>
+                    <p id="calculation-result-text-align">Hours of Rent: @ViewBag.HoursOfRent h</p>
+                </div>
+                <div>
+                    <p id="calculation-result-text-align">Bike Quantity: @ViewBag.BikeQuantity pcs</p>
+                </div>
+                <div>
+                    <p id="calculation-result-text-align"><b>Total Price: @ViewBag.Price €</b></p>
+                </div>
+                <div class="clearfix" style="text-align: center;">
+                    @Html.ActionLink("Back To Calculator", "New", "Rentals", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div id="rental-center-down">
+                <img id="rentalResult-img" src="@ViewBag.Image" class="img-responsive"/>
+            </div>
+        </div>
+        <div id="rental-right" class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+            <img id="result-img-right" src="~/Content/Images/scott&shimano.jpg" class="img-responsive" onclick="javascript:window.location='http://planetbike.rs/';"/>
+        </div>
+</div>
+
+

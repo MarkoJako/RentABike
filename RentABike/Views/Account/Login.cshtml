@@ -1,0 +1,50 @@
+﻿@using RentABike.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    <style>
+        #loginDiv {
+            margin-top: 30px;
+            background-color: lightgray;
+            border-style: ridge;
+        }
+    </style>
+}
+<div class="container">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+<div id="loginDiv" class="form-group-lg col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+    <h2 class="text-center"><b>@ViewBag.Title</b></h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "control-label", style = "font-size: 20px;" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "control-label", style = "font-size: 20px;" })
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.CheckBoxFor(m => m.RememberMe)
+        @Html.LabelFor(m => m.RememberMe, new { style = "font-size: 16px;", @class = "control-label" })
+    </div>
+    <br />
+    <div class="form-group">
+        <input type="submit" value="Log in" class="btn btn-default btn-lg" />
+    </div>
+    <p>
+        @Html.ActionLink("Register as a new user", "Register")
+    </p>
+    @Html.AntiForgeryToken()
+</div>
+}
+</div>
+
+
+
+
+

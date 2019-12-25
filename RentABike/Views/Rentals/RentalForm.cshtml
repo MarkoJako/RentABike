@@ -1,0 +1,76 @@
+﻿@model RentABike.ViewModels.RentalFormViewModel
+@{
+    ViewBag.Title = "TestRental";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+<style>
+        body {
+            background: url(/Content/Images/rental3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        footer {
+            display: none;
+        }
+        #rentalRow .field-validation-error {
+            color: red;
+            font-weight: bold;
+            text-shadow: 1px 0px 2px white;
+        }
+
+        #rentalRow .input-validation-error {
+            border-color: red;
+            border-width: 2px;
+        }  
+        #div1 {
+            display: inline-block;
+            float: left;
+            width: 48%;
+        }
+         #div2 {
+            display: inline-block;
+            float: right;
+            width: 48%;
+         }
+</style>
+}
+    <div class="container col-lg-4 col-lg-offset-4" style=" overflow-x: hidden; padding-top: 60px;">
+        <div id="rentalRow" class="row">
+
+            @using (Html.BeginForm("Calculate", "Rentals"))
+            {
+            <div class="form-group-lg">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Rental.BicycleId, new { style = "color: white; font-weight: bold; font-size: 18px; text-shadow: 1px -1px 0px #000;" })
+                    @Html.DropDownListFor(m => m.Rental.BicycleId, new SelectList(Model.Bicycles, "Id", "Name"), "Select Bicycle", new { @class = "form-control bicycle" })
+                    @Html.ValidationMessageFor(m => m.Rental.BicycleId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Rental.MembershipTypeId, new { style = "color: white; font-weight: bold; font-size: 18px; text-shadow: 1px -1px 0px #000;" })
+                    @Html.DropDownListFor(m => m.Rental.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control membership" })
+                    @Html.ValidationMessageFor(m => m.Rental.MembershipTypeId)
+                </div>
+                <div class="form-group">
+                    <div id="div1">
+                        @Html.LabelFor(m => m.Rental.HoursOfRent, new { style = "color: white; font-weight: bold; font-size: 18px; text-shadow: 1px -1px 0px #000;" })
+                        @Html.TextBoxFor(m => m.Rental.HoursOfRent, new { @class = "form-control hoursOfRent" })
+                        @Html.ValidationMessageFor(m => m.Rental.HoursOfRent)
+                    </div>
+                    <div id="div2">
+                        @Html.LabelFor(m => m.Rental.BikeQuantity, new { style = "color: white; font-weight: bold; font-size: 18px; text-shadow: 1px -1px 0px #000;" })
+                        @Html.DropDownListFor(m => m.Rental.BikeQuantity, Enumerable.Range(1, 10).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString() }), new { @class = "form-control bikeNumber" })
+                        @Html.ValidationMessageFor(m => m.Rental.BikeQuantity)
+                    </div>
+                </div> 
+                <br /><br /><br /><br /><br /><br /><br />
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 10px;">Calculate</button>
+                </div>
+            </div>
+                <br />
+            }
+
+        </div>
+    </div>
+

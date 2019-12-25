@@ -1,0 +1,90 @@
+﻿@model RentABike.ViewModels.BicycleFormViewModel
+@{
+
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <style>
+        body {
+            background: url(/Content/Images/bike4.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .form-control {
+            color: black;
+        }
+        footer {
+            display: none;
+        }
+        .form-group {
+            color: white;
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .text-center {
+            color: white;
+            text-shadow: 1px -3px 0px #000;
+        }
+        #newBicycleRow .field-validation-error {
+            color: lightcoral;
+            font-weight: 700;   
+            text-shadow: 1px 0px 2px red;
+        }
+        #newBicycleRow .input-validation-error {
+            border: 2px solid red;
+        }
+    </style>
+}
+    <div class="container col-lg-4 col-lg-offset-4" style="overflow-x: hidden;">
+        <div id="newBicycleRow" class="row">
+
+            @using (Html.BeginForm("SaveNew", "Bicycles"))
+            {
+                <h2 class="text-center"><b>New Bicycle</b></h2>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.Name, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.TextBoxFor(m => m.Bicycle.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.Name)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.PricePerHour, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.TextBoxFor(m => m.Bicycle.PricePerHour, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.PricePerHour)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.WheelsSize, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.TextBoxFor(m => m.Bicycle.WheelsSize, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.WheelsSize)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.BicycleTypeId, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.DropDownListFor(m => m.Bicycle.BicycleTypeId, new SelectList(Model.BicycleTypes, "Id", "Name"), "Select Bicycle Type", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.BicycleTypeId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.NumberInStock, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.TextBoxFor(m => m.Bicycle.NumberInStock, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.NumberInStock)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.ImageUrl, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.TextBoxFor(m => m.Bicycle.ImageUrl, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.ImageUrl)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Bicycle.Description, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -2px 0px #000;" })
+                    @Html.TextAreaFor(m => m.Bicycle.Description, new { @class = "form-control", rows = "7" })
+                    @Html.ValidationMessageFor(m => m.Bicycle.Description)
+                </div>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+
+
+

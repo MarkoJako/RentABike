@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8A18EA34-A8CB-4D42-BBE6-8986BE3D33BF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RentABike</RootNamespace>
+    <AssemblyName>RentABike</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BicycleReservationsController.cs" />
+    <Compile Include="Controllers\BicyclesController.cs" />
+    <Compile Include="Controllers\BicycleTypesController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081238190_InitialModel.cs" />
+    <Compile Include="Migrations\201910081238190_InitialModel.Designer.cs">
+      <DependentUpon>201910081238190_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081303320_AddMembershipType.cs" />
+    <Compile Include="Migrations\201910081303320_AddMembershipType.Designer.cs">
+      <DependentUpon>201910081303320_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081327420_PopulateMembershipType.cs" />
+    <Compile Include="Migrations\201910081327420_PopulateMembershipType.Designer.cs">
+      <DependentUpon>201910081327420_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081345330_ChangingPropertyNameInMEmbershipType.cs" />
+    <Compile Include="Migrations\201910081345330_ChangingPropertyNameInMEmbershipType.Designer.cs">
+      <DependentUpon>201910081345330_ChangingPropertyNameInMEmbershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081359422_add-migration test.cs" />
+    <Compile Include="Migrations\201910081359422_add-migration test.Designer.cs">
+      <DependentUpon>201910081359422_add-migration test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910090735456_AddingDataAnotationOnCustomerName.cs" />
+    <Compile Include="Migrations\201910090735456_AddingDataAnotationOnCustomerName.Designer.cs">
+      <DependentUpon>201910090735456_AddingDataAnotationOnCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910090949151_AddedNameToMembershipType.cs" />
+    <Compile Include="Migrations\201910090949151_AddedNameToMembershipType.Designer.cs">
+      <DependentUpon>201910090949151_AddedNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910090955496_UpdateDataInMembershipTypeTable.cs" />
+    <Compile Include="Migrations\201910090955496_UpdateDataInMembershipTypeTable.Designer.cs">
+      <DependentUpon>201910090955496_UpdateDataInMembershipTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091017140_AddingBirthdateInCustomerTable.cs" />
+    <Compile Include="Migrations\201910091017140_AddingBirthdateInCustomerTable.Designer.cs">
+      <DependentUpon>201910091017140_AddingBirthdateInCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091043021_test.cs" />
+    <Compile Include="Migrations\201910091043021_test.Designer.cs">
+      <DependentUpon>201910091043021_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091120098_AddingPropertiesInBicycleTBL.cs" />
+    <Compile Include="Migrations\201910091120098_AddingPropertiesInBicycleTBL.Designer.cs">
+      <DependentUpon>201910091120098_AddingPropertiesInBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091133342_AddingNumberInStockInBicycleTBL.cs" />
+    <Compile Include="Migrations\201910091133342_AddingNumberInStockInBicycleTBL.Designer.cs">
+      <DependentUpon>201910091133342_AddingNumberInStockInBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091137244_PopulateBicycleTBL.cs" />
+    <Compile Include="Migrations\201910091137244_PopulateBicycleTBL.Designer.cs">
+      <DependentUpon>201910091137244_PopulateBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091633423_PopulateBicycleTBL2.cs" />
+    <Compile Include="Migrations\201910091633423_PopulateBicycleTBL2.Designer.cs">
+      <DependentUpon>201910091633423_PopulateBicycleTBL2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111158582_test1.cs" />
+    <Compile Include="Migrations\201910111158582_test1.Designer.cs">
+      <DependentUpon>201910111158582_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111635278_AddBicycleTypeTBL.cs" />
+    <Compile Include="Migrations\201910111635278_AddBicycleTypeTBL.Designer.cs">
+      <DependentUpon>201910111635278_AddBicycleTypeTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111644001_PopulateBicycleTypeTBL.cs" />
+    <Compile Include="Migrations\201910111644001_PopulateBicycleTypeTBL.Designer.cs">
+      <DependentUpon>201910111644001_PopulateBicycleTypeTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111657286_AddingFKinBicycleTBL.cs" />
+    <Compile Include="Migrations\201910111657286_AddingFKinBicycleTBL.Designer.cs">
+      <DependentUpon>201910111657286_AddingFKinBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111702062_AddPhotoPropInBicycle.cs" />
+    <Compile Include="Migrations\201910111702062_AddPhotoPropInBicycle.Designer.cs">
+      <DependentUpon>201910111702062_AddPhotoPropInBicycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111704204_PopulateBicycleTBL1.cs" />
+    <Compile Include="Migrations\201910111704204_PopulateBicycleTBL1.Designer.cs">
+      <DependentUpon>201910111704204_PopulateBicycleTBL1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111707292_AddingDataInBicycleTable.cs" />
+    <Compile Include="Migrations\201910111707292_AddingDataInBicycleTable.Designer.cs">
+      <DependentUpon>201910111707292_AddingDataInBicycleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151128298_BirthdateIsRequired.cs" />
+    <Compile Include="Migrations\201910151128298_BirthdateIsRequired.Designer.cs">
+      <DependentUpon>201910151128298_BirthdateIsRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151707489_changingIntToStringInBicycleModel.cs" />
+    <Compile Include="Migrations\201910151707489_changingIntToStringInBicycleModel.Designer.cs">
+      <DependentUpon>201910151707489_changingIntToStringInBicycleModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151728090_testagain.cs" />
+    <Compile Include="Migrations\201910151728090_testagain.Designer.cs">
+      <DependentUpon>201910151728090_testagain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201036538_changePictureDataType.cs" />
+    <Compile Include="Migrations\201910201036538_changePictureDataType.Designer.cs">
+      <DependentUpon>201910201036538_changePictureDataType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910211634528_checkingSomething.cs" />
+    <Compile Include="Migrations\201910211634528_checkingSomething.Designer.cs">
+      <DependentUpon>201910211634528_checkingSomething.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230737122_add-migration update.cs" />
+    <Compile Include="Migrations\201910230737122_add-migration update.Designer.cs">
+      <DependentUpon>201910230737122_add-migration update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230751264_AddingDocumentNumberPropertyInCustomer.cs" />
+    <Compile Include="Migrations\201910230751264_AddingDocumentNumberPropertyInCustomer.Designer.cs">
+      <DependentUpon>201910230751264_AddingDocumentNumberPropertyInCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230758533_UpdateExistingREcordInCustomerTable.cs" />
+    <Compile Include="Migrations\201910230758533_UpdateExistingREcordInCustomerTable.Designer.cs">
+      <DependentUpon>201910230758533_UpdateExistingREcordInCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230822239_AddingPhoneNumberInCustomer.cs" />
+    <Compile Include="Migrations\201910230822239_AddingPhoneNumberInCustomer.Designer.cs">
+      <DependentUpon>201910230822239_AddingPhoneNumberInCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230823253_PopulateExistingREcordsInCustomerTBL.cs" />
+    <Compile Include="Migrations\201910230823253_PopulateExistingREcordsInCustomerTBL.Designer.cs">
+      <DependentUpon>201910230823253_PopulateExistingREcordsInCustomerTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910230950165_AddingPricePerHourInBicycle.cs" />
+    <Compile Include="Migrations\201910230950165_AddingPricePerHourInBicycle.Designer.cs">
+      <DependentUpon>201910230950165_AddingPricePerHourInBicycle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910231016229_PopulatePriceInBicycleTBL.cs" />
+    <Compile Include="Migrations\201910231016229_PopulatePriceInBicycleTBL.Designer.cs">
+      <DependentUpon>201910231016229_PopulatePriceInBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910231025122_ChangingFrameSizeInBicycleTBL.cs" />
+    <Compile Include="Migrations\201910231025122_ChangingFrameSizeInBicycleTBL.Designer.cs">
+      <DependentUpon>201910231025122_ChangingFrameSizeInBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910231521547_AddNewModelRental.cs" />
+    <Compile Include="Migrations\201910231521547_AddNewModelRental.Designer.cs">
+      <DependentUpon>201910231521547_AddNewModelRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241049276_REmovingBicycleIdFromREntal.cs" />
+    <Compile Include="Migrations\201910241049276_REmovingBicycleIdFromREntal.Designer.cs">
+      <DependentUpon>201910241049276_REmovingBicycleIdFromREntal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241105476_REmoveMembershipTypeIdFromRentalModel.cs" />
+    <Compile Include="Migrations\201910241105476_REmoveMembershipTypeIdFromRentalModel.Designer.cs">
+      <DependentUpon>201910241105476_REmoveMembershipTypeIdFromRentalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241302037_ChangeRentalModel.cs" />
+    <Compile Include="Migrations\201910241302037_ChangeRentalModel.Designer.cs">
+      <DependentUpon>201910241302037_ChangeRentalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910241429247_doubleToInt.cs" />
+    <Compile Include="Migrations\201910241429247_doubleToInt.Designer.cs">
+      <DependentUpon>201910241429247_doubleToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910271432332_updateMembershipTypeTBL.cs" />
+    <Compile Include="Migrations\201910271432332_updateMembershipTypeTBL.Designer.cs">
+      <DependentUpon>201910271432332_updateMembershipTypeTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910271448203_UpdateMembershipType.cs" />
+    <Compile Include="Migrations\201910271448203_UpdateMembershipType.Designer.cs">
+      <DependentUpon>201910271448203_UpdateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910271453284_FinalUpdateMembershipType.cs" />
+    <Compile Include="Migrations\201910271453284_FinalUpdateMembershipType.Designer.cs">
+      <DependentUpon>201910271453284_FinalUpdateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910281055210_SeedUsers.cs" />
+    <Compile Include="Migrations\201910281055210_SeedUsers.Designer.cs">
+      <DependentUpon>201910281055210_SeedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910281938396_ChangePriceInDecimal.cs" />
+    <Compile Include="Migrations\201910281938396_ChangePriceInDecimal.Designer.cs">
+      <DependentUpon>201910281938396_ChangePriceInDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911011724044_DeleteFrameSizeFromBicycleTBL.cs" />
+    <Compile Include="Migrations\201911011724044_DeleteFrameSizeFromBicycleTBL.Designer.cs">
+      <DependentUpon>201911011724044_DeleteFrameSizeFromBicycleTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911031148480_ChangingPricePerHourFromIntToDecimal.cs" />
+    <Compile Include="Migrations\201911031148480_ChangingPricePerHourFromIntToDecimal.Designer.cs">
+      <DependentUpon>201911031148480_ChangingPricePerHourFromIntToDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261415409_UpdateMembershipTypeTable.cs" />
+    <Compile Include="Migrations\201911261415409_UpdateMembershipTypeTable.Designer.cs">
+      <DependentUpon>201911261415409_UpdateMembershipTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261429240_UpdateMembershipWithNewData.cs" />
+    <Compile Include="Migrations\201911261429240_UpdateMembershipWithNewData.Designer.cs">
+      <DependentUpon>201911261429240_UpdateMembershipWithNewData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261433037_AddNewMembershipCard.cs" />
+    <Compile Include="Migrations\201911261433037_AddNewMembershipCard.Designer.cs">
+      <DependentUpon>201911261433037_AddNewMembershipCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912041027202_AddBicycleReservationModel.cs" />
+    <Compile Include="Migrations\201912041027202_AddBicycleReservationModel.Designer.cs">
+      <DependentUpon>201912041027202_AddBicycleReservationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912041049159_AddUserInRoles.cs" />
+    <Compile Include="Migrations\201912041049159_AddUserInRoles.Designer.cs">
+      <DependentUpon>201912041049159_AddUserInRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912041106314_AssignRoleToUser.cs" />
+    <Compile Include="Migrations\201912041106314_AssignRoleToUser.Designer.cs">
+      <DependentUpon>201912041106314_AssignRoleToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912041545074_DeletePropertyInReservationsTBL.cs" />
+    <Compile Include="Migrations\201912041545074_DeletePropertyInReservationsTBL.Designer.cs">
+      <DependentUpon>201912041545074_DeletePropertyInReservationsTBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912041556030_DeleteReservationNumber.cs" />
+    <Compile Include="Migrations\201912041556030_DeleteReservationNumber.Designer.cs">
+      <DependentUpon>201912041556030_DeleteReservationNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051617363_AddNewUserRole.cs" />
+    <Compile Include="Migrations\201912051617363_AddNewUserRole.Designer.cs">
+      <DependentUpon>201912051617363_AddNewUserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061119188_DateTypeAnnotationOnCustomerBirthdate.cs" />
+    <Compile Include="Migrations\201912061119188_DateTypeAnnotationOnCustomerBirthdate.Designer.cs">
+      <DependentUpon>201912061119188_DateTypeAnnotationOnCustomerBirthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061142324_ResetDateTypeOnCustomer.cs" />
+    <Compile Include="Migrations\201912061142324_ResetDateTypeOnCustomer.Designer.cs">
+      <DependentUpon>201912061142324_ResetDateTypeOnCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AtLeast16YearsOld.cs" />
+    <Compile Include="Models\Bicycle.cs" />
+    <Compile Include="Models\BicycleReservation.cs" />
+    <Compile Include="Models\BicycleType.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Rental.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BicycleFormViewModel.cs" />
+    <Compile Include="ViewModels\BicycleReservationViewModel.cs" />
+    <Compile Include="ViewModels\CustomerFormNewModel.cs" />
+    <Compile Include="ViewModels\RentalFormViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-cosmo.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-flatly.css" />
+    <Content Include="Content\bootstrap-lumen.css" />
+    <Content Include="Content\bootstrap-slate.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-yeti.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Images\bike.jpg" />
+    <Content Include="Content\Images\bike3.jpg" />
+    <Content Include="Content\Images\bike4.jpg" />
+    <Content Include="Content\Images\bike5.jpg" />
+    <Content Include="Content\Images\bronze.jpg" />
+    <Content Include="Content\Images\continental&amp;uvex&amp;SR.jpg" />
+    <Content Include="Content\Images\Ebike3.jpg" />
+    <Content Include="Content\Images\fruska_gora2.jpg" />
+    <Content Include="Content\Images\gold.jpg" />
+    <Content Include="Content\Images\homePicture.jpg" />
+    <Content Include="Content\Images\ns.jpg" />
+    <Content Include="Content\Images\platinum.jpg" />
+    <Content Include="Content\Images\rental2.jpg" />
+    <Content Include="Content\Images\rental3.jpg" />
+    <Content Include="Content\Images\rentalPicture.jpg" />
+    <Content Include="Content\Images\scott&amp;shimano.jpg" />
+    <Content Include="Content\Images\silver.jpg" />
+    <Content Include="Content\Images\vine_route2.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JS\bicycleIndex.js" />
+    <Content Include="Scripts\JS\bicycleTypeIndex.js" />
+    <Content Include="Scripts\JS\reservationIndexAdmin.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Bicycles\Index.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Bicycles\New.cshtml" />
+    <Content Include="Views\Bicycles\BicycleEditForm.cshtml" />
+    <Content Include="Views\Customers\EditCustomerForm.cshtml" />
+    <Content Include="Views\Rentals\RentalForm.cshtml" />
+    <Content Include="Views\Rentals\Result.cshtml" />
+    <Content Include="Views\Bicycles\IndexForUsers.cshtml" />
+    <Content Include="Views\Bicycles\DetailsForUsers.cshtml" />
+    <Content Include="Views\Shared\_MapsLocation.cshtml" />
+    <Content Include="Views\Home\TermsAndConditions.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\BicycleTypes\Index.cshtml" />
+    <Content Include="Views\BicycleReservations\NewReservation.cshtml" />
+    <Content Include="Views\BicycleReservations\Index.cshtml" />
+    <Content Include="Views\BicycleReservations\IndexAdmin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910081238190_InitialModel.resx">
+      <DependentUpon>201910081238190_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081303320_AddMembershipType.resx">
+      <DependentUpon>201910081303320_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081327420_PopulateMembershipType.resx">
+      <DependentUpon>201910081327420_PopulateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081345330_ChangingPropertyNameInMEmbershipType.resx">
+      <DependentUpon>201910081345330_ChangingPropertyNameInMEmbershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081359422_add-migration test.resx">
+      <DependentUpon>201910081359422_add-migration test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910090735456_AddingDataAnotationOnCustomerName.resx">
+      <DependentUpon>201910090735456_AddingDataAnotationOnCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910090949151_AddedNameToMembershipType.resx">
+      <DependentUpon>201910090949151_AddedNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910090955496_UpdateDataInMembershipTypeTable.resx">
+      <DependentUpon>201910090955496_UpdateDataInMembershipTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091017140_AddingBirthdateInCustomerTable.resx">
+      <DependentUpon>201910091017140_AddingBirthdateInCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091043021_test.resx">
+      <DependentUpon>201910091043021_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091120098_AddingPropertiesInBicycleTBL.resx">
+      <DependentUpon>201910091120098_AddingPropertiesInBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091133342_AddingNumberInStockInBicycleTBL.resx">
+      <DependentUpon>201910091133342_AddingNumberInStockInBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091137244_PopulateBicycleTBL.resx">
+      <DependentUpon>201910091137244_PopulateBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091633423_PopulateBicycleTBL2.resx">
+      <DependentUpon>201910091633423_PopulateBicycleTBL2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111158582_test1.resx">
+      <DependentUpon>201910111158582_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111635278_AddBicycleTypeTBL.resx">
+      <DependentUpon>201910111635278_AddBicycleTypeTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111644001_PopulateBicycleTypeTBL.resx">
+      <DependentUpon>201910111644001_PopulateBicycleTypeTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111657286_AddingFKinBicycleTBL.resx">
+      <DependentUpon>201910111657286_AddingFKinBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111702062_AddPhotoPropInBicycle.resx">
+      <DependentUpon>201910111702062_AddPhotoPropInBicycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111704204_PopulateBicycleTBL1.resx">
+      <DependentUpon>201910111704204_PopulateBicycleTBL1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111707292_AddingDataInBicycleTable.resx">
+      <DependentUpon>201910111707292_AddingDataInBicycleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151128298_BirthdateIsRequired.resx">
+      <DependentUpon>201910151128298_BirthdateIsRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151707489_changingIntToStringInBicycleModel.resx">
+      <DependentUpon>201910151707489_changingIntToStringInBicycleModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151728090_testagain.resx">
+      <DependentUpon>201910151728090_testagain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201036538_changePictureDataType.resx">
+      <DependentUpon>201910201036538_changePictureDataType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910211634528_checkingSomething.resx">
+      <DependentUpon>201910211634528_checkingSomething.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230737122_add-migration update.resx">
+      <DependentUpon>201910230737122_add-migration update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230751264_AddingDocumentNumberPropertyInCustomer.resx">
+      <DependentUpon>201910230751264_AddingDocumentNumberPropertyInCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230758533_UpdateExistingREcordInCustomerTable.resx">
+      <DependentUpon>201910230758533_UpdateExistingREcordInCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230822239_AddingPhoneNumberInCustomer.resx">
+      <DependentUpon>201910230822239_AddingPhoneNumberInCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230823253_PopulateExistingREcordsInCustomerTBL.resx">
+      <DependentUpon>201910230823253_PopulateExistingREcordsInCustomerTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910230950165_AddingPricePerHourInBicycle.resx">
+      <DependentUpon>201910230950165_AddingPricePerHourInBicycle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231016229_PopulatePriceInBicycleTBL.resx">
+      <DependentUpon>201910231016229_PopulatePriceInBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231025122_ChangingFrameSizeInBicycleTBL.resx">
+      <DependentUpon>201910231025122_ChangingFrameSizeInBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231521547_AddNewModelRental.resx">
+      <DependentUpon>201910231521547_AddNewModelRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241049276_REmovingBicycleIdFromREntal.resx">
+      <DependentUpon>201910241049276_REmovingBicycleIdFromREntal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241105476_REmoveMembershipTypeIdFromRentalModel.resx">
+      <DependentUpon>201910241105476_REmoveMembershipTypeIdFromRentalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241302037_ChangeRentalModel.resx">
+      <DependentUpon>201910241302037_ChangeRentalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910241429247_doubleToInt.resx">
+      <DependentUpon>201910241429247_doubleToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910271432332_updateMembershipTypeTBL.resx">
+      <DependentUpon>201910271432332_updateMembershipTypeTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910271448203_UpdateMembershipType.resx">
+      <DependentUpon>201910271448203_UpdateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910271453284_FinalUpdateMembershipType.resx">
+      <DependentUpon>201910271453284_FinalUpdateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281055210_SeedUsers.resx">
+      <DependentUpon>201910281055210_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281938396_ChangePriceInDecimal.resx">
+      <DependentUpon>201910281938396_ChangePriceInDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011724044_DeleteFrameSizeFromBicycleTBL.resx">
+      <DependentUpon>201911011724044_DeleteFrameSizeFromBicycleTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031148480_ChangingPricePerHourFromIntToDecimal.resx">
+      <DependentUpon>201911031148480_ChangingPricePerHourFromIntToDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261415409_UpdateMembershipTypeTable.resx">
+      <DependentUpon>201911261415409_UpdateMembershipTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261429240_UpdateMembershipWithNewData.resx">
+      <DependentUpon>201911261429240_UpdateMembershipWithNewData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261433037_AddNewMembershipCard.resx">
+      <DependentUpon>201911261433037_AddNewMembershipCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912041027202_AddBicycleReservationModel.resx">
+      <DependentUpon>201912041027202_AddBicycleReservationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912041049159_AddUserInRoles.resx">
+      <DependentUpon>201912041049159_AddUserInRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912041106314_AssignRoleToUser.resx">
+      <DependentUpon>201912041106314_AssignRoleToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912041545074_DeletePropertyInReservationsTBL.resx">
+      <DependentUpon>201912041545074_DeletePropertyInReservationsTBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912041556030_DeleteReservationNumber.resx">
+      <DependentUpon>201912041556030_DeleteReservationNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051617363_AddNewUserRole.resx">
+      <DependentUpon>201912051617363_AddNewUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061119188_DateTypeAnnotationOnCustomerBirthdate.resx">
+      <DependentUpon>201912061119188_DateTypeAnnotationOnCustomerBirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061142324_ResetDateTypeOnCustomer.resx">
+      <DependentUpon>201912061142324_ResetDateTypeOnCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49965</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49965/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

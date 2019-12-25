@@ -1,0 +1,103 @@
+﻿@model RentABike.ViewModels.CustomerFormViewModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <style>
+        body {
+            background: url(/Content/Images/bike.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .form-control {
+            color: black;
+        }
+        .form-group {
+            color: white;
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto; 
+        }
+        footer {
+            display: none;
+        }
+        .text-center {
+            color: white;
+            text-shadow: 1px -3px 0px #000;
+        }
+            #newCustomerRow .field-validation-error {
+                color: yellow;
+                font-weight: bold;
+            }
+
+            #newCustomerRow .input-validation-error {
+                border-color: yellow;
+            }
+    </style>
+
+}
+<div class="container col-lg-4 col-lg-offset-4" style="overflow-x: hidden; padding-top: 20px;"> 
+    <div id="newCustomerRow" class="row">
+
+        @using (Html.BeginForm("Save", "Customers"))
+        {
+            <h2 class="text-center"><b>New Customer</b></h2>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.Name, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -1px 3px #000;" })
+                @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.Birthdate, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -1px 3px #000;" })
+                @Html.TextBoxFor(m => m.Customer.Birthdate, new { @Value = Model.Customer.Birthdate.ToString("MM/dd/yyyy"), id = "datepicker", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.Birthdate)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.DocumentNumber, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -1px 3px #000;" })
+                @Html.TextBoxFor(m => m.Customer.DocumentNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.DocumentNumber)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.PhoneNumber, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -1px 3px #000;" })
+                @Html.TextBoxFor(m => m.Customer.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.PhoneNumber)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Customer.MembershipTypeId, new { style = "font-weight: bold; font-size: 14px; text-shadow: 1px -1px 3px #000;" })
+                @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+            </div>
+            @Html.HiddenFor(m => m.Customer.Id)
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <br />
+        }
+        </>
+    </div>
+</div>
+
+@section scripts
+{
+    <!--BIRTHDATE DATEPICKER CODE-->
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                //dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+}
+
+
+
+

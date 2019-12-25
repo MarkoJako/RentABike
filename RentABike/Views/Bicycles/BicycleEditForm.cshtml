@@ -1,0 +1,75 @@
+﻿@model RentABike.ViewModels.BicycleFormViewModel
+@{
+
+    ViewBag.Title = "BicycleEditForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <style>
+        .form-control {
+            color: black;
+        }
+        h2 {
+            font-style: normal;
+            font-weight: 500;
+        }
+    </style>
+}
+
+<div class="container">
+    <div class="row">
+
+        @using (Html.BeginForm("SaveEdited", "Bicycles"))
+        {
+        <div class="col-md-4">
+            <h2>Edit Bicycle</h2>
+            <div id="firstDiv" class="form-group">
+                @Html.LabelFor(m => m.Bicycle.Name, new { id="fontSize" })
+                @Html.TextBoxFor(m => m.Bicycle.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bicycle.Name)
+            </div>
+            <div id="firstDiv" class="form-group">
+                @Html.LabelFor(m => m.Bicycle.PricePerHour, new { id = "fontSize" })
+                @Html.TextBoxFor(m => m.Bicycle.PricePerHour, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bicycle.PricePerHour)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Bicycle.WheelsSize, new { id = "fontSize" })
+                @Html.TextBoxFor(m => m.Bicycle.WheelsSize, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bicycle.WheelsSize)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Bicycle.BicycleTypeId, new { id = "fontSize" })
+                @Html.DropDownListFor(m => m.Bicycle.BicycleTypeId, new SelectList(Model.BicycleTypes, "Id", "Name"), "Select Bicycle Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bicycle.BicycleTypeId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Bicycle.NumberInStock, new { id = "fontSize" })
+                @Html.TextBoxFor(m => m.Bicycle.NumberInStock, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bicycle.NumberInStock)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Bicycle.ImageUrl, new { id = "fontSize" })
+                @Html.TextBoxFor(m => m.Bicycle.ImageUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Bicycle.ImageUrl)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Bicycle.Description, new { id = "fontSize" })
+                @Html.TextAreaFor(m => m.Bicycle.Description, new { @class = "form-control", rows = "7" })
+                @Html.ValidationMessageFor(m => m.Bicycle.Description)
+            </div>
+            @Html.HiddenFor(m => m.Bicycle.Id)
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-primary">Edit Bicycle</button>
+            <br />
+            <br />
+        </div>
+            <div id="secondDiv" class="col-lg-8 col-md-8" style="padding-top: 80px">
+                <img src="@Model.Bicycle.ImageUrl" width="1200" alt="@Model.Bicycle.Name" class="img-responsive" />
+            </div>
+        }
+
+    </div>
+
+</div>
+
+

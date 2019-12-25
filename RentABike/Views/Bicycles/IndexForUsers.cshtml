@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RentABike.Models.Bicycle>
+@{
+    ViewBag.Title = "Bicycles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid" style="padding-top: 20px;">
+        @foreach (var bicycle in Model)
+        {
+        <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <br />
+            <img src="@bicycle.ImageUrl" width="300" height="200">
+            <h1 style="font-size: 30px; font-weight: 500;">@bicycle.Name</h1>
+            <p class="price">€@bicycle.PricePerHour</p>
+            @Html.ActionLink("More Details", "DetailsUsersView", "Bicycles", new { id = bicycle.Id }, new { @class = "btn btn-primary btn-block" })
+            <br />
+        </div>
+        }
+</div>

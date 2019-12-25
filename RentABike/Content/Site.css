@@ -1,0 +1,251 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+    
+}
+body {
+    /*padding-top: 40px;*/
+    margin-bottom: 70px;
+    width: 100%;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    background: #333;
+    min-height: 70px;
+}
+    footer .container-fluid {
+        height: 100%;
+        text-align: center;
+        background: #333;
+        padding-top: 13px;
+    }
+     
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+input {
+    box-sizing: border-box
+}
+.field-validation-error{
+    color:red;
+}
+.input-validation-error
+{
+    border-color:red;
+}
+/*.container {
+    margin-top: 20px;
+        
+}*/
+
+#home-jumbotron{
+    background-color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#rental-result-container {
+    width: auto;
+    height: 580px;
+}
+#rental-left {
+    height: 580px;
+}
+
+#rental-center-up {
+    height: 200px;
+}
+
+#rental-right {
+    height: 580px;
+}
+#result-img-right {
+    width: 85%;
+    height: 100%;
+}
+#result-img-left {
+    width: 100%;
+    height: 100%;
+    padding-left: 45px;
+}
+
+#rentalForm-leftDiv {
+    background-color: #D3D3D3;
+    border-radius: 5px;
+}
+#rentalForm-leftDiv .form-group {
+
+}
+#rentalForm-img {
+    width: 100%;
+    height: 440px;
+    border-radius: 5px;
+    /*padding-right: 10px;*/
+}
+
+#rentalForm-rightDiv {
+    /*padding-right: 30px;*/
+    /*height: 50px;
+    width: 50px;*/
+    /*box-shadow: 12px 12px 20px 3px #008CBA;*/
+    /*width: 40%;
+    justify-content: center;*/
+    /*margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;*/
+}
+
+#home-contact {
+    height: 300px;
+}
+
+#maps-div {
+    /*display: inline-block;*/
+    height: 300px;
+    padding: 0 0 0 0;
+    
+}
+#contact-div {
+    display: inline-block;
+    height: 300px;
+    background-color: yellow;
+}
+#contact-title {
+    position: relative;
+    text-decoration: underline;
+    line-height: 1.4;
+    font-size: 18px;
+}
+#working-hours, #contactH5 {
+    margin-top: 25px;
+    font-size: 18px;
+}
+#rentalResult-img {
+    height: inherit;
+    width: auto;
+}
+/*#layout-container {
+    width: 100%;
+    padding: 0;  
+}*/
+#calculation-result-text-align {
+    text-align: center;
+}
+#fontSize {
+    font-size: 16px;
+}
+.form-control description {
+    height: 300px;
+}
+
+#newCustomerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*#newBicycleRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 25px 25px 25px 15px rgba(0,0,0,50.5);
+    min-width: 280px;
+}
+    #newBicycleRow .form-control {
+        width: 350px;
+    }
+    #newBicycleRow .form-group {
+        color: white;
+    }*/
+    /*#newBicycleRow h2 {
+        color: white;
+    }*/
+
+/*#newCustomerRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 25px 25px 25px 15px rgba(0,0,0,50.5);
+    min-width: 280px;
+    border: 5px solid yellow;
+}*/
+    /*#newCustomerRow .form-control {    
+        width: 350px;
+    }
+    #newCustomerRow .form-group {
+        color: white;
+    }
+    #newCustomerRow h2 {
+        color: red;
+    }
+    #newCustomerRow .field-validation-error {
+        color: yellow;
+        font-weight: bold;
+    }
+    #newCustomerRow .input-validation-error {
+        border-color: yellow;
+    }*/
+
+#membershipCardText {
+    color: grey;
+    font-weight: 600;
+    font-family: Arial,Helvetica,sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+    .card button:hover {
+        opacity: 0.7;   
+    }
+
+
+
+
+
+
+

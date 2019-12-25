@@ -1,0 +1,62 @@
+﻿@model RentABike.ViewModels.BicycleReservationViewModel
+@{
+    ViewBag.Title = "NewReservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <style>
+        #reservDiv {
+            margin-top: 30px;
+            background-color: lightgray;
+            border-style: ridge;
+        }
+    </style>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+}
+<div class="container">
+@using (Html.BeginForm("SaveReservation", "BicycleReservations"))
+{
+   
+        <div id="reservDiv" class="form-group-lg col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+            <h2 style="text-align:center;"><b>New Reservation</b></h2>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(m => m.BicycleReservation.BicycleId, new { style = "font-weight: bold; font-size: 20px;" })
+                @Html.DropDownListFor(m => m.BicycleReservation.BicycleId, new SelectList(Model.Bicycles, "Id", "Name"), "Select Bicycle", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.BicycleReservation.BicycleId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BicycleReservation.StartRide, new { style = "font-weight: bold; font-size: 20px;" })
+                @Html.TextBoxFor(m => m.BicycleReservation.StartRide, new { @Value = Model.BicycleReservation.StartRide.ToString("MM/dd/yyyy"), id = "datepicker", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.BicycleReservation.StartRide)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BicycleReservation.EndRide, new { style = "font-weight: bold; font-size: 20px;" })
+                @Html.TextBoxFor(m => m.BicycleReservation.EndRide, new { @Value = Model.BicycleReservation.EndRide.ToString("MM/dd/yyyy"), id = "datepicker2", @class = "form-control" })
+            </div>
+            <div style="padding-bottom: 10px;">
+                <button type="submit" class="btn btn-primary btn-lg">Submit Reservation</button>
+            </div>
+            @Html.HiddenFor(m => m.BicycleReservation.Id)
+            @Html.AntiForgeryToken()
+        </div>
+        }
+   </div>
+
+    @section scripts
+{
+        <!--BIRTHDATE DATEPICKER CODE-->
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({
+                    minDate: 0, // disable past date
+                }).datepicker("setDate", new Date());
+            });
+            $(function () {
+                $("#datepicker2").datepicker({
+                    minDate: 0, // disable past date
+                }).datepicker("setDate", new Date());
+            });
+        </script>
+    }
