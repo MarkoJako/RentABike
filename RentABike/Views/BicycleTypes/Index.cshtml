@@ -3,12 +3,17 @@
     ViewBag.Title = "BicycleType";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-<script src="~/Scripts/JS/bicycleTypeIndex.js"></script>
+    <script src="~/Scripts/JS/bicycleTypeIndex.js"></script>
     <style>
         .modal-backdrop {
             z-index: -1;
         }
-
+        #editModalBody input {
+            height: 50px;
+           font-size: 24px;
+           font-weight:500;
+           border: 1px solid #e5e5e5
+        }
         h2 {
             font-style: normal;
             font-weight: 500;
@@ -45,6 +50,7 @@
             <thead>
                 <tr>
                     <th id="fontSize">Bicycle Types</th>
+                    <th id="fontSize">Edit</th>
                     <th id="fontSize">Delete</th>
                 </tr>
             </thead>
@@ -53,6 +59,10 @@
                 {
                     <tr>
                         <td id="fontSize">@bicycleTypes.Name</td>
+                        <td id="fontSize">
+                            <a href="#editModal" class="edit" data-toggle="modal"><i class="btn btn-primary glyphicon glyphicon-pencil" data-toggle="tooltip" title="Edit"></i></a>
+                            <input type="hidden" name="id" id="id" value="@bicycleTypes.Id">
+                        </td>
                         <td id="fontSize">
                             <a href="#deleteModal" class="delete" data-toggle="modal"><i class="btn btn-danger glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete"></i></a>
                             <input type="hidden" name="id" id="id" value="@bicycleTypes.Id">
@@ -92,3 +102,29 @@
     </div>
 </div>
 <!--End Delete Modal-->
+
+<!--Edit Modal-->
+<div id="editModal" class="modal fade">
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm("Edit", "BicycleTypes"))
+        {
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Bicycle Type</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div id="editModalBody"class="modal-body">
+                <input type="text" required="required" name="name" id="name" class="form-control" value=""/>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <input type="hidden" name="id" id="id" />
+            </div>
+        }
+    </div>
+</div>
+</div>

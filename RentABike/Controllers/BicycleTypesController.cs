@@ -40,6 +40,29 @@ namespace RentABike.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "BicycleTypes");
         }
+        public ActionResult OnGetFind(int id)
+        {
+            var bicycleTypes = (from t in _context.BicyclesTypes
+                                where (t.Id == id)
+                                select new
+                                {
+                                    id = t.Id,
+                                    name = t.Name
+                                }).ToList();
+
+            return Json(bicycleTypes, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Edit(int Id, string Name)
+        {
+            var bicycleTypeInDb = _context.BicyclesTypes.SingleOrDefault(x => x.Id == Id);
+            bicycleTypeInDb.Id = Id;
+            bicycleTypeInDb.Name = Name;
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "BicycleTypes");
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
