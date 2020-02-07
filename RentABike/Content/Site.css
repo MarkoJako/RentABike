@@ -1,7 +1,7 @@
 ﻿html {
     position: relative;
     min-height: 100%;
-    
+    width: 100%;
 }
 body {
     /*padding-top: 40px;*/
@@ -117,6 +117,7 @@ input {
 
 #home-contact {
     height: 300px;
+    width: 100%;
 }
 
 #maps-div {
