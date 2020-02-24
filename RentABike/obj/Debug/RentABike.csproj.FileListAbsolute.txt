@@ -102,7 +102,6 @@ C:\Users\Marko\source\repos\RentABike\RentABike\bin\Microsoft.Owin.Security.OAut
 C:\Users\Marko\source\repos\RentABike\RentABike\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Marko\source\repos\RentABike\RentABike\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Marko\source\repos\RentABike\RentABike\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Marko\source\repos\RentABike\RentABike\obj\Debug\RentABike.csproj.CoreCompileInputs.cache
 C:\Users\Marko\source\repos\RentABike\RentABike\obj\Debug\RentABike.csproj.CopyComplete
 C:\Users\Marko\source\repos\RentABike\RentABike\obj\Debug\RentABike.dll
 C:\Users\Marko\source\repos\RentABike\RentABike\obj\Debug\RentABike.pdb
